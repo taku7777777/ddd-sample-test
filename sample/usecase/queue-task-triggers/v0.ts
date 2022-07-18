@@ -258,13 +258,7 @@ export class DeviceServiceImpl {
     if (!result.success) {
       await QueueTaskService.removeStackTasks({taskId: param2});
     } else {
-      await QueueTaskService.updateProgressTaskBatchFailed({taskId: param2});
+      await QueueTaskService.updateProgressTaskBatchSucceed({taskId: param2});
     }
   };
 }
-
-
-
-
-
-
