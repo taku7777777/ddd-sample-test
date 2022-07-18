@@ -49,15 +49,15 @@ export class QueueTaskEntity {
 /**
  * QueueTaskを登録するためのUsecaseの処理
  */
-export const registerUsecase = async () => {
+export const registerUsecase = async (queueId: string) => {
   const batch = db.batch();
 
-  const entity = new QueueTaskEntity({
-    queueId: 'queueId',
+  const taskEntity = new QueueTaskEntity({
+    queueId,
   });
 
   // modelを用いた永続化
-  await new QueueTaskRepository(batch).save(entity);
+  await new QueueTaskRepository(batch).save(taskEntity);
 
   await batch.commit();
 };
